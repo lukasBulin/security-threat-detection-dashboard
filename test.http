@@ -1,0 +1,44 @@
+POST http://localhost:8080/api/logs
+Content-Type: application/json
+
+{
+  "timestamp": "2026-11-18T20:00:00",
+  "sourceIp": "192.168.1.100",
+  "username": "admin",
+  "eventType": "LOGIN_FAILED"
+}
+
+###
+
+GET http://localhost:8080/api/logs
+
+###
+
+POST http://localhost:8080/api/alerts
+Content-Type: application/json
+
+{
+  "severity": "HIGH",
+  "description": "Potential brute force attack detected",
+  "createdAt": "2026-11-20T09:00:00"
+}
+
+###
+
+GET http://localhost:8080/api/alerts
+
+###
+
+POST http://localhost:8080/api/logs
+Content-Type: application/json
+
+{
+  "timestamp": "2026-11-20T12:00:00",
+  "sourceIp": "192.168.1.100",
+  "username": "admin",
+  "eventType": "LOGIN_FAILED"
+}
+
+###
+
+GET http://localhost:8080/api/alerts
