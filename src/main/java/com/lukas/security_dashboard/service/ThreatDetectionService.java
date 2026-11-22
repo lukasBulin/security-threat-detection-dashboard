@@ -25,15 +25,24 @@ public class ThreatDetectionService {
 
         System.out.println("Failed Count = " + failedCount);
 
-        if (failedCount == 5) {
+        Alert alert = new Alert();
 
-            Alert alert = new Alert();
+        if (failedCount == 5) {
 
             alert.setSeverity("HIGH");
             alert.setDescription("Potential brute force attack detected from IP: "
                                 + logEvent.getSourceIp());
 
             alert.setCreatedAt(LocalDateTime.now());
+
+            return alert;
+        }
+
+        if ("LOGIN_SUCCESS".equals(logEvent.getEventType()) && failedCount >= 5)
+        {
+            alert.setSeverity("CRITICAL");
+            alert.setDescription("Possible account compromise from IP: "
+            + logEvent.getSourceIp());
 
             return alert;
         }

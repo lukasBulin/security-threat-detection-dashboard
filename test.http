@@ -42,3 +42,27 @@ Content-Type: application/json
 ###
 
 GET http://localhost:8080/api/alerts
+
+###
+
+POST http://localhost:8080/api/generate?count=10000
+
+###
+
+GET http://localhost:8080/api/logs
+
+###
+
+GET http://localhost:8080/api/analytics/top-ips
+
+###
+
+GET http://localhost:8080/api/analytics/top-users
+
+###
+
+GET http://localhost:8080/api/analytics/event-distribution
+
+###
+
+GET http://localhost:8080/api/analytics/alert-severity
