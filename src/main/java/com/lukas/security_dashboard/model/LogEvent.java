@@ -54,4 +54,11 @@ public class LogEvent {
     public void setEventType(String eventType) {
         this.eventType = eventType;
     }
+
+    @PrePersist
+    protected void setTimestampIfMissing() {
+        if (timestamp == null) {
+            timestamp = LocalDateTime.now();
+        }
+    }
 }
