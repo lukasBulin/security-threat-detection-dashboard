@@ -1,10 +1,22 @@
 services:
+  postgres:
+    image: postgres:18
+    container_name: security-dashboard-postgres
+    environment:
+      POSTGRES_DB: security_dashboard
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: PLOT202sofa?
+    ports:
+      - "5432:5432"
+
   backend:
     image: security-dashboard-backend
     container_name: security-dashboard-backend
+    depends_on:
+      - postgres
     ports:
       - "8080:8080"
     environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://host.docker.internal:5432/security_dashboard
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/security_dashboard
       SPRING_DATASOURCE_USERNAME: postgres
       SPRING_DATASOURCE_PASSWORD: PLOT202sofa?
